@@ -38,20 +38,21 @@ public class CarAgent : Agent
      * - current speed
      * - position relative to parking spot
     **/
-
     public override void CollectObservations(VectorSensor sensor)
     {
         float currentspeed = GetComponent<Rigidbody>().velocity.magnitude;
-        Vector2 directionToTarget = target.transform.position - transform.position;
-        List<float> proximitySensors = new List<float>(new float[8]);
+        sensor.AddObservation(currentspeed);
+
+        Vector3 directionToTarget = target.transform.position - transform.position;
+        sensor.AddObservation(directionToTarget.x);
+        sensor.AddObservation(directionToTarget.z);
 
         foreach (int proximitySensorId in Enumerable.Range(0, 8))
         {
             int sensorAngle = proximitySensorId * 45;
-            Debug.Log(sensorAngle);
             Quaternion sensorDirection = transform.rotation;
             sensorDirection.SetAxisAngle(transform.up, sensorAngle * (Mathf.PI/180));
-            proximitySensors[proximitySensorId] = SenseDistance(sensorDirection * transform.forward);
+            sensor.AddObservation(SenseDistance(sensorDirection * transform.forward));
         }
     }
 
