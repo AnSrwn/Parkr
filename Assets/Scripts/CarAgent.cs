@@ -75,6 +75,9 @@ public class CarAgent : Agent
     // Is called every thime actions are received (from human or neural network)
     public override void OnActionReceived(float[] vectorAction)
     {
+        int maxEpisodeLength = 60;
+        float secondsRemaining = (float) (maxEpisodeLength - System.DateTime.Now.Subtract(episodeBeginTime).TotalSeconds);
+
         foreach (WheelCollider wheel in speedWheels)
         {
             wheel.motorTorque = strengthCoefficient * Time.deltaTime * vectorAction[0]; //speed
@@ -88,7 +91,7 @@ public class CarAgent : Agent
         // reached target
         if ((target.transform.position - transform.position).magnitude < 0.2f)
         {
-            SetReward(1.0f);
+            SetReward(secondsRemaining/maxEpisodeLength);
             EndEpisode();
         }
 
@@ -99,7 +102,7 @@ public class CarAgent : Agent
         }
 
         // Time frame exceeded
-        if (System.DateTime.Now.Subtract(episodeBeginTime).TotalSeconds > 60)
+        if (secondsRemaining < 0)
         {
             EndEpisode();
         }
