@@ -58,21 +58,21 @@ public class CarAgent : Agent
         {
             int sensorAngle = proximitySensorId * 45;
             Quaternion sensorDirection = transform.rotation;
-            sensorDirection = Quaternion.AngleAxis(sensorAngle, transform.up);
+            sensorDirection = Quaternion.AngleAxis(sensorAngle, Vector3.up);
             sensor.AddObservation(SenseDistance(sensorDirection * transform.forward));
         }
     }
 
     private float SenseDistance(Vector3 direction){
         RaycastHit hit;
-        float viewDistance = 50f;
-        if (Physics.Raycast(transform.position, direction, out hit, viewDistance))
+        float viewDistance = 10f;
+        if (Physics.Raycast(transform.position + new Vector3(0, 0.4f, 0), direction, out hit, viewDistance))
         {
-            Debug.DrawRay(transform.position, direction * hit.distance, Color.green);
+            Debug.DrawRay(transform.position + new Vector3(0, 0.4f, 0), direction * hit.distance, Color.green);
         }
         else
         {
-            Debug.DrawRay(transform.position, direction * Mathf.Min(1000, viewDistance), Color.white);
+            Debug.DrawRay(transform.position + new Vector3(0, 0.4f, 0), direction * viewDistance, Color.white);
         }
         return hit.distance;
     }
