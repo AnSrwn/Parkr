@@ -579,7 +579,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.15033245, z: 2.2472825}
-  m_Center: {x: 0, y: 0.16504121, z: -0.024288654}
+  m_Center: {x: 0, y: 0.16504121, z: 0}
 --- !u!114 &1291279331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 11
     NumStackedVectorObservations: 1
     VectorActionSize: 02000000
     VectorActionDescriptions: []
@@ -659,7 +659,7 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411036391}
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Center: {x: 0, y: 0.05, z: 0}
   m_Radius: 0.18
   m_SuspensionSpring:
     spring: 10000
@@ -695,7 +695,7 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492225176}
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Center: {x: 0, y: 0.05, z: 0}
   m_Radius: 0.18
   m_SuspensionSpring:
     spring: 10000
@@ -825,7 +825,7 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050726585}
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Center: {x: 0, y: 0.05, z: 0}
   m_Radius: 0.18
   m_SuspensionSpring:
     spring: 10000
@@ -861,7 +861,7 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136177524}
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Center: {x: 0, y: 0.05, z: 0}
   m_Radius: 0.18
   m_SuspensionSpring:
     spring: 10000

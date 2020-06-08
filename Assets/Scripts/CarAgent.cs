@@ -27,8 +27,10 @@ public class CarAgent : Agent
         {
             wheel.steerAngle = 0.0f;
         }
-
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = resetPosition.position;
+        transform.rotation = new Quaternion(0, 0, 0, 0);
 
         episodeBeginTime = System.DateTime.Now;
     }
@@ -42,25 +44,28 @@ public class CarAgent : Agent
     **/
     public override void CollectObservations(VectorSensor sensor)
     {
+        // current speed
         float currentspeed = GetComponent<Rigidbody>().velocity.magnitude;
         sensor.AddObservation(currentspeed);
 
+        // position relative to parking spot
         Vector3 directionToTarget = target.transform.position - transform.position;
         sensor.AddObservation(directionToTarget.x);
         sensor.AddObservation(directionToTarget.z);
 
+        // 8 proximity sensors
         foreach (int proximitySensorId in Enumerable.Range(0, 8))
         {
             int sensorAngle = proximitySensorId * 45;
             Quaternion sensorDirection = transform.rotation;
-            sensorDirection.SetAxisAngle(transform.up, sensorAngle * (Mathf.PI/180));
+            sensorDirection = Quaternion.AngleAxis(sensorAngle, transform.up);
             sensor.AddObservation(SenseDistance(sensorDirection * transform.forward));
         }
     }
 
     private float SenseDistance(Vector3 direction){
         RaycastHit hit;
-        float viewDistance = Mathf.Infinity;
+        float viewDistance = 50f;
         if (Physics.Raycast(transform.position, direction, out hit, viewDistance))
         {
             Debug.DrawRay(transform.position, direction * hit.distance, Color.green);
@@ -96,7 +101,7 @@ public class CarAgent : Agent
         }
 
         // fell from platform
-        if (this.transform.localPosition.y < -5)
+        if (this.transform.localPosition.y < -1)
         {
             EndEpisode();
         }
