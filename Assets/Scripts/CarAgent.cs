@@ -13,6 +13,7 @@ public class CarAgent : Agent
     public float maxTurn;
     public Transform resetPosition;
     public GameObject target;
+    public DateTime episodeBeginTime;
 
     // Used for resetting
     public override void OnEpisodeBegin()
@@ -29,6 +30,7 @@ public class CarAgent : Agent
 
         transform.position = resetPosition.position;
 
+        episodeBeginTime = System.DateTime.Now;
     }
 
     /**
@@ -83,7 +85,24 @@ public class CarAgent : Agent
             wheel.steerAngle = maxTurn * vectorAction[1]; // steering
         }
 
-        //TODO call EndEpisode() if conditions are fulfilled
+        // reached target
+        if ((target.transform.position - transform.position).magnitude < 0.2f)
+        {
+            SetReward(1.0f);
+            EndEpisode();
+        }
+
+        // fell from platform
+        if (this.transform.localPosition.y < -5)
+        {
+            EndEpisode();
+        }
+
+        // Time frame exceeded
+        if (System.DateTime.Now.Subtract(episodeBeginTime).TotalSeconds > 60)
+        {
+            EndEpisode();
+        }
     }
 
     // Used for human player input
