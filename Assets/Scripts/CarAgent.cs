@@ -9,11 +9,23 @@ public class CarAgent : Agent
     public List<WheelCollider> steeringWheels;
     public float strengthCoefficient;
     public float maxTurn;
+    public Transform resetPosition;
 
     // Used for resetting
     public override void OnEpisodeBegin()
     {
-       //TODO
+        foreach (WheelCollider wheel in speedWheels)
+        {
+            wheel.motorTorque = 0.0f;
+        }
+
+        foreach (WheelCollider wheel in steeringWheels)
+        {
+            wheel.steerAngle = 0.0f;
+        }
+
+        transform.position = resetPosition.position;
+
     }
 
     /**
