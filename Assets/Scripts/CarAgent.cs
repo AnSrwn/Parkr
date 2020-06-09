@@ -66,13 +66,13 @@ public class CarAgent : Agent
     private float SenseDistance(Vector3 direction){
         RaycastHit hit;
         float viewDistance = 10f;
-        if (Physics.Raycast(transform.position + new Vector3(0, 0.4f, 0), direction, out hit, viewDistance))
+        if (Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), direction, out hit, viewDistance))
         {
-            Debug.DrawRay(transform.position + new Vector3(0, 0.4f, 0), direction * hit.distance, Color.green);
+            Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), direction * hit.distance, Color.green);
         }
         else
         {
-            Debug.DrawRay(transform.position + new Vector3(0, 0.4f, 0), direction * viewDistance, Color.white);
+            Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), direction * viewDistance, Color.white);
         }
         return hit.distance;
     }
