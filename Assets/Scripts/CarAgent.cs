@@ -94,8 +94,8 @@ public class CarAgent : Agent
         }
 
         // reached target
-        if ((target.transform.position - transform.position).magnitude < 0.2f)
-        {
+        if ((target.transform.position - transform.position).magnitude < 1.5f)
+        {            
             SetReward(secondsRemaining/maxEpisodeLength);
             EndEpisode();
         }
