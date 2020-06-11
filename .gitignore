@@ -6,8 +6,8 @@
 Assets/AssetStoreTools*
 Parkr/Assets/ML-Agents/
 Parkr/Assets/ML-Agents.meta
-summaries/
-models/
+/summaries/
+/models/
 ve/
 
 # Visual Studio cache directory
