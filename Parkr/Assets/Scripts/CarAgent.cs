@@ -13,10 +13,11 @@ public class CarAgent : Agent
     public float maxTurn;
     public Transform resetPosition;
     public GameObject target;
-    private DateTime episodeBeginTime;
-    private float previousDistanceToTarget;
-    private Rigidbody rigidbody;
-    private bool isColliding = false;
+    public GameObject sensorOrigin;
+    DateTime episodeBeginTime;
+    float previousDistanceToTarget;
+    Rigidbody rigidbody;
+    bool isColliding = false;
 
     // Used for resetting
     public override void OnEpisodeBegin()
@@ -72,16 +73,18 @@ public class CarAgent : Agent
         }
     }
 
-    private float SenseDistance(Vector3 direction){
+    float SenseDistance(Vector3 direction){
+        Transform originTransform = sensorOrigin.GetComponent<Transform>();
         RaycastHit hit;
         float viewDistance = 10f;
-        if (Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), direction, out hit, viewDistance))
+
+        if (Physics.Raycast(originTransform.position, direction, out hit, viewDistance))
         {
-            Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), direction * hit.distance, Color.green);
+            Debug.DrawRay(originTransform.position, direction * hit.distance, Color.green);
         }
         else
         {
-            Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), direction * viewDistance, Color.white);
+            Debug.DrawRay(originTransform.position, direction * viewDistance, Color.grey);
         }
         return hit.distance;
     }
