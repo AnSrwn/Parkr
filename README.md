@@ -3,7 +3,8 @@ Parkr is a simulation in which a reinforcement learning agent learns how to park
 
 ## Setup and start training:
 * Unity Version: 2019.3.15f1
-* ML Agents Package: 1.0.2     
+* ML Agents Package Version: 1.0.2
+* Python Version: 3.7.7
 
 1. Change Behavior Type of Behavior Parameters of the Car to 'Default'   
 1. Create two folders with the name 'models' and 'summaries' in the root folder
