@@ -16,6 +16,7 @@ public class CarAgent : Agent
     private DateTime episodeBeginTime;
     private float previousDistanceToTarget;
     private Rigidbody rigidbody;
+    private bool isColliding = false;
 
     // Used for resetting
     public override void OnEpisodeBegin()
@@ -98,6 +99,12 @@ public class CarAgent : Agent
         {
             wheel.steerAngle = maxTurn * vectorAction[1]; // steering
         }
+
+        // negative reward if colliding with other object
+        if (isColliding)
+        {
+            SetReward(-0.1f);
+        }
         
         // distance to target
         if (distanceToTarget < previousDistanceToTarget)
@@ -152,4 +159,13 @@ public class CarAgent : Agent
         actionsOut[1] = Input.GetAxis("Horizontal");
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        isColliding = true;
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        isColliding = false;
+    }
 }
