@@ -13,7 +13,8 @@ public class CarAgent : Agent
     public float maxTurn;
     public Transform resetPosition;
     public GameObject target;
-    public DateTime episodeBeginTime;
+    private DateTime episodeBeginTime;
+    private float previousDistanceToTarget;
 
     // Used for resetting
     public override void OnEpisodeBegin()
@@ -33,6 +34,7 @@ public class CarAgent : Agent
         transform.rotation = new Quaternion(0, 0, 0, 0);
 
         episodeBeginTime = System.DateTime.Now;
+        previousDistanceToTarget = (target.transform.position - transform.position).magnitude;
     }
 
     /**
@@ -81,6 +83,7 @@ public class CarAgent : Agent
     public override void OnActionReceived(float[] vectorAction)
     {
         int maxEpisodeLength = 60;
+        float distanceToTarget = (target.transform.position - transform.position).magnitude;
         float secondsRemaining = (float) (maxEpisodeLength - System.DateTime.Now.Subtract(episodeBeginTime).TotalSeconds);
 
         foreach (WheelCollider wheel in speedWheels)
@@ -92,9 +95,35 @@ public class CarAgent : Agent
         {
             wheel.steerAngle = maxTurn * vectorAction[1]; // steering
         }
+        
+        // distance to target
+        if (distanceToTarget < previousDistanceToTarget)
+        {
+            // Positive reward if getting 5 units closer to target
+            for (int step = 15; step >= 5; step -= 5)
+            {
+                if (distanceToTarget < step && previousDistanceToTarget > step)
+                {
+                    SetReward(0.1f);
+                    break;
+                }
+            }            
+        } else
+        {
+            // Negative reward if getting 5 units farther away from target
+            for (int step = 15; step >= 5; step -= 5)
+            {
+                if (distanceToTarget > step && previousDistanceToTarget < step)
+                {
+                    SetReward(-0.1f);
+                    break;
+                }
+            }
+        }
+        previousDistanceToTarget = distanceToTarget;
 
         // reached target
-        if ((target.transform.position - transform.position).magnitude < 1.5f)
+        if (distanceToTarget < 1.5f)
         {            
             SetReward(secondsRemaining/maxEpisodeLength);
             EndEpisode();
