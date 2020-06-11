@@ -55,9 +55,12 @@ public class CarAgent : Agent
         sensor.AddObservation(currentspeed);
 
         // position relative to parking spot
-        Vector3 directionToTarget = target.transform.position - transform.position;
-        sensor.AddObservation(directionToTarget.x);
-        sensor.AddObservation(directionToTarget.z);
+        if (target != null)
+        {
+            Vector3 directionToTarget = target.transform.position - transform.position;
+            sensor.AddObservation(directionToTarget.x);
+            sensor.AddObservation(directionToTarget.z);
+        }
 
         // 8 proximity sensors
         foreach (int proximitySensorId in Enumerable.Range(0, 8))
