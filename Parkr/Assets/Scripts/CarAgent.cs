@@ -15,10 +15,13 @@ public class CarAgent : Agent
     public GameObject target;
     private DateTime episodeBeginTime;
     private float previousDistanceToTarget;
+    private Rigidbody rigidbody;
 
     // Used for resetting
     public override void OnEpisodeBegin()
     {
+        rigidbody = GetComponent<Rigidbody>();
+
         foreach (WheelCollider wheel in speedWheels)
         {
             wheel.motorTorque = 0.0f;
@@ -28,13 +31,13 @@ public class CarAgent : Agent
         {
             wheel.steerAngle = 0.0f;
         }
-        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+        rigidbody.velocity = Vector3.zero;
         transform.position = resetPosition.position;
         transform.rotation = new Quaternion(0, 0, 0, 0);
 
         episodeBeginTime = System.DateTime.Now;
-        previousDistanceToTarget = (target.transform.position - transform.position).magnitude;
+        previousDistanceToTarget = (target.transform.position - transform.position).magnitude;        
     }
 
     /**
@@ -123,8 +126,8 @@ public class CarAgent : Agent
         previousDistanceToTarget = distanceToTarget;
 
         // reached target
-        if (distanceToTarget < 1.5f)
-        {            
+        if (distanceToTarget < 1.5f && rigidbody.velocity.magnitude < 0.01f)
+        {   
             SetReward(secondsRemaining/maxEpisodeLength);
             EndEpisode();
         }
