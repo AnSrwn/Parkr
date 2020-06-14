@@ -11,7 +11,7 @@ In order to do this, Unity ML-Agents is used.
 1. Create two folders with the name `models` and `summaries` in the root folder.
 1. Open the unity project folder in a CLI.
 1. Execute the following commands:
-```shell
+```bash
 mlagents-learn
 mlagents-learn ./ParkrCar.yaml --run-id ParkrCar --train`
 ```
