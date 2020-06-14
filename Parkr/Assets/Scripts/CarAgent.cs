@@ -89,7 +89,7 @@ public class CarAgent : Agent
         return hit.distance;
     }
 
-    // Is called every thime actions are received (from human or neural network)
+    // Is called every time actions are received (from human or neural network)
     public override void OnActionReceived(float[] vectorAction)
     {
         int maxEpisodeLength = 60;
@@ -141,7 +141,7 @@ public class CarAgent : Agent
         // reached target
         if (distanceToTarget < 1.5f && rigidbody.velocity.magnitude < 0.01f)
         {   
-            SetReward(secondsRemaining/maxEpisodeLength);
+            SetReward(1 + secondsRemaining/maxEpisodeLength);
             EndEpisode();
         }
 
