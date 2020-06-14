@@ -383,6 +383,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.56, z: 2.36}
   m_Center: {x: 0, y: 0.34, z: -0.016}
+--- !u!54 &158305199
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158305197}
+  serializedVersion: 2
+  m_Mass: 6000
+  m_Drag: 1000
+  m_AngularDrag: 200
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1001 &177153760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -718,6 +734,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.56, z: 2.36}
   m_Center: {x: 0, y: 0.34, z: -0.016}
+--- !u!54 &223556983
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223556981}
+  serializedVersion: 2
+  m_Mass: 7000
+  m_Drag: 1000
+  m_AngularDrag: 200
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1001 &234550378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2053,6 +2085,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.56, z: 2.36}
   m_Center: {x: 0, y: 0.34, z: -0.016}
+--- !u!54 &816143380
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816143378}
+  serializedVersion: 2
+  m_Mass: 7000
+  m_Drag: 1000
+  m_AngularDrag: 200
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1001 &828969495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2141,6 +2189,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.56, z: 2.36}
   m_Center: {x: 0, y: 0.34, z: -0.016}
+--- !u!54 &859764028
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859764026}
+  serializedVersion: 2
+  m_Mass: 7000
+  m_Drag: 1000
+  m_AngularDrag: 200
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1001 &876733743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2850,6 +2914,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.56, z: 2.36}
   m_Center: {x: 0, y: 0.34, z: -0.016}
+--- !u!54 &1263800930
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263800928}
+  serializedVersion: 2
+  m_Mass: 6000
+  m_Drag: 1000
+  m_AngularDrag: 200
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!4 &1281644932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424696, guid: 4827b5b4be1e46346b075831791a9326,
@@ -3046,6 +3126,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.56, z: 2.36}
   m_Center: {x: 0, y: 0.34, z: -0.016}
+--- !u!54 &1362912499
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362912497}
+  serializedVersion: 2
+  m_Mass: 6000
+  m_Drag: 1000
+  m_AngularDrag: 200
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1001 &1406077268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3128,6 +3224,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.56, z: 2.36}
   m_Center: {x: 0, y: 0.34, z: -0.016}
+--- !u!54 &1406077272
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406077270}
+  serializedVersion: 2
+  m_Mass: 6000
+  m_Drag: 1000
+  m_AngularDrag: 200
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1 &1411036391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1375252959024446, guid: ab26596a331d7ee43a3e9d29e2be9f84,
@@ -3720,6 +3832,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.56, z: 2.36}
   m_Center: {x: 0, y: 0.34, z: -0.016}
+--- !u!54 &1638381508
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638381506}
+  serializedVersion: 2
+  m_Mass: 6000
+  m_Drag: 1000
+  m_AngularDrag: 200
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1 &1640559910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1646981259178978, guid: 0ae65270c30153049ab49eb3ebf070d6,
@@ -3739,6 +3867,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.56, z: 2.36}
   m_Center: {x: 0, y: 0.34, z: -0.016}
+--- !u!54 &1640559912
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640559910}
+  serializedVersion: 2
+  m_Mass: 7000
+  m_Drag: 1000
+  m_AngularDrag: 200
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1 &1643936006 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1959030373088092, guid: fc4245223e4122142bb14239d44230ef,
@@ -3758,6 +3902,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.259654, y: 1.1161892, z: 4.0293903}
   m_Center: {x: 0.0066428185, y: 0.5880357, z: -0.010960102}
+--- !u!54 &1643936008
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643936006}
+  serializedVersion: 2
+  m_Mass: 12000
+  m_Drag: 1500
+  m_AngularDrag: 500
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1001 &1687144927
 PrefabInstance:
   m_ObjectHideFlags: 0
