@@ -140,7 +140,17 @@ public class CarAgent : Agent
 
         // reached target
         if (distanceToTarget < 1.5f && rigidbody.velocity.magnitude < 0.01f)
-        {   
+        {
+            // if almost parallel, agent receives additional reward
+            Vector3 targetMarkingDirection = new Vector3(0, 0, 1);
+            float dotProduct = Vector3.Dot(targetMarkingDirection, rigidbody.transform.forward);
+
+            if (dotProduct > 0.9)
+            {
+                SetReward(0.5f);
+            }        
+
+            // minimum reward of 1 and additional reward depending on time needed
             SetReward(1 + secondsRemaining/maxEpisodeLength);
             EndEpisode();
         }
