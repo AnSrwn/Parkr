@@ -207,7 +207,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1646981259178978, guid: 0ae65270c30153049ab49eb3ebf070d6, type: 3}
       propertyPath: m_Name
-      value: Car_1 (1)
+      value: Car_6
       objectReference: {fileID: 0}
     - target: {fileID: 4870167790249810, guid: 0ae65270c30153049ab49eb3ebf070d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -270,6 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 130950214}
+  - component: {fileID: 130950215}
   m_Layer: 0
   m_Name: Cars
   m_TagString: Untagged
@@ -301,6 +302,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &130950215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130950213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23214dad315a94b47b7dcf5a0990ba44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cars:
+  - {fileID: 223556981}
+  - {fileID: 859764026}
+  - {fileID: 1362912497}
+  - {fileID: 1263800928}
+  - {fileID: 158305197}
+  - {fileID: 816143378}
+  - {fileID: 1640559910}
+  - {fileID: 1638381506}
+  - {fileID: 1406077270}
+  - {fileID: 1643936006}
 --- !u!1001 &158305195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -310,7 +334,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1646981259178978, guid: ab26596a331d7ee43a3e9d29e2be9f84, type: 3}
       propertyPath: m_Name
-      value: Car_4 (1)
+      value: Car_5
       objectReference: {fileID: 0}
     - target: {fileID: 4870167790249810, guid: ab26596a331d7ee43a3e9d29e2be9f84, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1937,7 +1961,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1646981259178978, guid: 0ae65270c30153049ab49eb3ebf070d6, type: 3}
       propertyPath: m_Name
-      value: Car_1 (2)
+      value: Car_7
       objectReference: {fileID: 0}
     - target: {fileID: 4870167790249810, guid: 0ae65270c30153049ab49eb3ebf070d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3000,6 +3024,7 @@ MonoBehaviour:
   resetPosition: {fileID: 1243787555}
   target: {fileID: 707087534}
   sensorOrigin: {fileID: 411566558}
+  obistcaleCars: {fileID: 130950213}
 --- !u!114 &1291279332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3018,7 +3043,7 @@ MonoBehaviour:
     VectorActionSize: 02000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: 9054a86577dd3ae4ab9d71c35cbff2ff, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: ecbbaeb0d8453d8448b22c480a7b1fe1, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: ParkrCar
@@ -3151,7 +3176,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1646981259178978, guid: 50477af197889084e8a6d97f2b73b73b, type: 3}
       propertyPath: m_Name
-      value: Taxi
+      value: Car_9
       objectReference: {fileID: 0}
     - target: {fileID: 4870167790249810, guid: 50477af197889084e8a6d97f2b73b73b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3759,7 +3784,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1646981259178978, guid: ab26596a331d7ee43a3e9d29e2be9f84, type: 3}
       propertyPath: m_Name
-      value: Car_4 (2)
+      value: Car_8
       objectReference: {fileID: 0}
     - target: {fileID: 4870167790249810, guid: ab26596a331d7ee43a3e9d29e2be9f84, type: 3}
       propertyPath: m_LocalPosition.x

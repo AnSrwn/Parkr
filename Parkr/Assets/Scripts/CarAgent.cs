@@ -14,6 +14,7 @@ public class CarAgent : Agent
     public Transform resetPosition;
     public GameObject target;
     public GameObject sensorOrigin;
+    public GameObject obistcaleCars;
     DateTime episodeBeginTime;
     float previousDistanceToTarget;
     Rigidbody rigidbody;
@@ -37,6 +38,8 @@ public class CarAgent : Agent
         rigidbody.velocity = Vector3.zero;
         transform.position = resetPosition.position;
         transform.rotation = new Quaternion(0, 0, 0, 0);
+
+        obistcaleCars.GetComponent<ResetCars>().ResetCarPositions();
 
         episodeBeginTime = System.DateTime.Now;
         previousDistanceToTarget = (target.transform.position - transform.position).magnitude;        
