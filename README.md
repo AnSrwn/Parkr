@@ -24,6 +24,14 @@ mlagents-learn
 mlagents-learn ./ParkrCar.yaml --run-id ParkrCar --train
 ```
 
+### Using Tensorboard
+1. Open the unity project folder in a CLI.
+2. Execute the following command:
+```bash
+tensorboard --logdir=summaries --port=6006
+```
+3. Open http://localhost:6006
+
 ## Observations
 There are 11 observations.
 * Current speed of the car (1)
