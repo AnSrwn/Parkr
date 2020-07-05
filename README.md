@@ -45,8 +45,8 @@ There are 2 actions.
 
 ## Rewards
 * Collision with other objects: -0.1 (every time actions are received)
-* Getting closer to parking spot: +0.1 (every 5 meters)
-* Getting farther away from parking spot: -0.1 (every 5 meters)
+* Getting closer to parking spot: +0.1 (every meter)
+* Getting farther away from parking spot: -0.1 (every meter)
 * Reached parking spot: +1
   * Parked parallel to markings: +0.5
   * Time needed: between 0 and +1 (secondsRemaining/maxEpisodeLength)
