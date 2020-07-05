@@ -16,6 +16,7 @@ public class CarAgent : Agent
     public GameObject sensorOrigin;
     public GameObject obistcaleCars;
     DateTime episodeBeginTime;
+    float initialDistanceToTarget;
     float previousDistanceToTarget;
     Rigidbody rigidbody;
     bool isColliding = false;
@@ -42,7 +43,8 @@ public class CarAgent : Agent
         obistcaleCars.GetComponent<ResetCars>().ResetCarPositions();
 
         episodeBeginTime = System.DateTime.Now;
-        previousDistanceToTarget = (target.transform.position - transform.position).magnitude;        
+        initialDistanceToTarget = (target.transform.position - transform.position).magnitude;
+        previousDistanceToTarget = initialDistanceToTarget;        
     }
 
     /**
@@ -118,28 +120,21 @@ public class CarAgent : Agent
         // distance to target
         if (distanceToTarget < previousDistanceToTarget)
         {
-            // Positive reward if getting 5 units closer to target
-            for (int step = 15; step >= 5; step -= 5)
+            // Positive reward if getting 1 unit closer to target
+            if ((previousDistanceToTarget - distanceToTarget) >= 1)
             {
-                if (distanceToTarget < step && previousDistanceToTarget > step)
-                {
-                    SetReward(0.1f);
-                    break;
-                }
-            }            
+                SetReward(0.1f);
+                previousDistanceToTarget = distanceToTarget;
+            }        
         } else
         {
-            // Negative reward if getting 5 units farther away from target
-            for (int step = 15; step >= 5; step -= 5)
+            // Negative reward if getting 1 unit farther away from target
+            if ((distanceToTarget - previousDistanceToTarget) >= 1)
             {
-                if (distanceToTarget > step && previousDistanceToTarget < step)
-                {
-                    SetReward(-0.1f);
-                    break;
-                }
+                SetReward(-0.1f);
+                previousDistanceToTarget = distanceToTarget;
             }
         }
-        previousDistanceToTarget = distanceToTarget;
 
         // reached target
         if (distanceToTarget < 1.5f && rigidbody.velocity.magnitude < 0.01f)
