@@ -11,7 +11,8 @@ public class CarAgent : Agent
     public List<WheelCollider> steeringWheels;
     public float strengthCoefficient;
     public float maxTurn;
-    public Transform resetPosition;
+    public Transform resetAreaLowerLeft;
+    public Transform resetAreaUpperRight;
     public GameObject target;
     public GameObject sensorOrigin;
     public GameObject obistcaleCars;
@@ -37,14 +38,18 @@ public class CarAgent : Agent
         }
         rigidbody.angularVelocity = Vector3.zero;
         rigidbody.velocity = Vector3.zero;
-        transform.position = resetPosition.position;
-        transform.rotation = new Quaternion(0, 0, 0, 0);
+        transform.position = GetRandomStartLocation();
+        transform.rotation = new Quaternion(0,0,0,0);
 
         obistcaleCars.GetComponent<ResetCars>().ResetCarPositions();
 
         episodeBeginTime = System.DateTime.Now;
         initialDistanceToTarget = (target.transform.position - transform.position).magnitude;
         previousDistanceToTarget = initialDistanceToTarget;        
+    }
+
+    Vector3 GetRandomStartLocation(){
+        return new Vector3(UnityEngine.Random.Range(resetAreaLowerLeft.position.x, resetAreaUpperRight.position.x),0, UnityEngine.Random.Range(resetAreaLowerLeft.position.z, resetAreaUpperRight.position.z));
     }
 
     /**
