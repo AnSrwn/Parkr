@@ -182,4 +182,11 @@ public class CarAgent : Agent
     {
         isColliding = false;
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("terminator")){
+            EndEpisode();
+        }
+    }
 }
