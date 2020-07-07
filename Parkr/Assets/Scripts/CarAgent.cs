@@ -49,7 +49,9 @@ public class CarAgent : Agent
     }
 
     Vector3 GetRandomStartLocation(){
-        return new Vector3(UnityEngine.Random.Range(resetAreaLowerLeft.position.x, resetAreaUpperRight.position.x),0, UnityEngine.Random.Range(resetAreaLowerLeft.position.z, resetAreaUpperRight.position.z));
+        float xSpawnPosition = UnityEngine.Random.Range(resetAreaLowerLeft.position.x, resetAreaUpperRight.position.x);
+        float zSpawnPosition = UnityEngine.Random.Range(resetAreaLowerLeft.position.z, resetAreaUpperRight.position.z);
+        return new Vector3(xSpawnPosition,0, zSpawnPosition);
     }
 
     /**
