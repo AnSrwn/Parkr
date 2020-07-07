@@ -39,7 +39,7 @@ public class CarAgent : Agent
         rigidbody.angularVelocity = Vector3.zero;
         rigidbody.velocity = Vector3.zero;
         transform.position = GetRandomStartLocation();
-        transform.rotation = new Quaternion(0,0,0,0);
+        transform.rotation = Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(0, 360), 0));
 
         obistcaleCars.GetComponent<ResetCars>().ResetCarPositions();
 
