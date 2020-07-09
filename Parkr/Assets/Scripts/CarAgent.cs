@@ -67,12 +67,18 @@ public class CarAgent : Agent
         float currentspeed = GetComponent<Rigidbody>().velocity.magnitude;
         sensor.AddObservation(currentspeed);
 
-        // position relative to parking spot
         if (target != null)
         {
             Vector3 directionToTarget = target.transform.position - transform.position;
+
+            // position relative to parking spot
             sensor.AddObservation(directionToTarget.x);
             sensor.AddObservation(directionToTarget.z);
+
+            // angle as scalar to parking spot
+            float scalarToTarget = Vector3.Dot(transform.forward.normalized, directionToTarget.normalized);
+            Debug.Log(scalarToTarget);
+
         }
 
         // 8 proximity sensors
