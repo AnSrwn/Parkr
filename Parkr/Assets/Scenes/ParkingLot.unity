@@ -3208,7 +3208,7 @@ MonoBehaviour:
     VectorActionSpaceType: 1
   m_Model: {fileID: 5022602860645237092, guid: ecbbaeb0d8453d8448b22c480a7b1fe1, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: ParkrCar
   TeamId: 0
   m_UseChildSensors: 1
@@ -3720,8 +3720,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05999996, y: 0.19999999, z: 0.003500001}
-  m_Center: {x: 0, y: -4.0954466e-11, z: -0.00024498563}
+  m_Size: {x: 0.05999996, y: 0.19999999, z: 0.026899494}
+  m_Center: {x: -0.0000000011101449, y: -0.000047868823, z: 0.011454745}
 --- !u!4 &1507862618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 428436, guid: c34fc8b553ca59d4aa373291d16f02e2,
@@ -3820,8 +3820,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05999996, y: 0.19999999, z: 0.003500001}
-  m_Center: {x: 0, y: -4.0954466e-11, z: -0.00024498563}
+  m_Size: {x: 0.05999996, y: 0.19999999, z: 0.034669224}
+  m_Center: {x: -0.000017696066, y: 0, z: 0.015339597}
 --- !u!1 &1556012618
 GameObject:
   m_ObjectHideFlags: 0
@@ -4899,6 +4899,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 329344144}
     m_Modifications:
+    - target: {fileID: 1260166576, guid: 62fe3f67c0fbe8147b390189129f084b, type: 3}
+      propertyPath: m_Size.z
+      value: 0.025803894
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260166576, guid: 62fe3f67c0fbe8147b390189129f084b, type: 3}
+      propertyPath: m_Center.x
+      value: -0.000000001057055
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260166576, guid: 62fe3f67c0fbe8147b390189129f084b, type: 3}
+      propertyPath: m_Center.y
+      value: -0.00004564096
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260166576, guid: 62fe3f67c0fbe8147b390189129f084b, type: 3}
+      propertyPath: m_Center.z
+      value: 0.010906962
+      objectReference: {fileID: 0}
     - target: {fileID: 6789536952491255638, guid: 62fe3f67c0fbe8147b390189129f084b,
         type: 3}
       propertyPath: m_LocalPosition.x
