@@ -77,8 +77,7 @@ public class CarAgent : Agent
 
             // angle as scalar to parking spot
             float scalarToTarget = Vector3.Dot(transform.forward.normalized, directionToTarget.normalized);
-            Debug.Log(scalarToTarget);
-
+            sensor.AddObservation(scalarToTarget);
         }
 
         // 8 proximity sensors
