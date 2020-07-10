@@ -3580,9 +3580,9 @@ MonoBehaviour:
     VectorActionSize: 02000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: ecbbaeb0d8453d8448b22c480a7b1fe1, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 8b96fd3dff5b28942adfe7420a3039e2, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: ParkrCar
   TeamId: 0
   m_UseChildSensors: 1
