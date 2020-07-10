@@ -25,18 +25,20 @@ default:
     checkpoint_interval: 50000
     threaded: true
     init_path: null
+
+    use_recurrent: false
     
     reward_signals:
         extrinsic:
             strength: 1.0
             gamma: 0.99
 
-    # curiosity module
-    curiosity:
-        strength: 0.02
-        gamma: 0.99
-        encoding_size: 256
-        learning_rate: 3.0e-4
+        # curiosity module
+        curiosity:
+            strength: 0.02
+            gamma: 0.99
+            encoding_size: 256
+            learning_rate: 3.0e-4
 
 ParkrCar:
     trainer: ppo
