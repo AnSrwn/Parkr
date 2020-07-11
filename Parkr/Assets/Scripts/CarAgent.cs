@@ -21,6 +21,7 @@ public class CarAgent : Agent
     float previousDistanceToTarget;
     Rigidbody rigidbody;
     bool isColliding = false;
+    bool reachedTarget = false;
 
     // Used for resetting
     public override void OnEpisodeBegin()
@@ -45,7 +46,9 @@ public class CarAgent : Agent
 
         episodeBeginTime = System.DateTime.Now;
         initialDistanceToTarget = (target.transform.position - transform.position).magnitude;
-        previousDistanceToTarget = initialDistanceToTarget;        
+        previousDistanceToTarget = initialDistanceToTarget;
+        isColliding = false;
+        reachedTarget = false;
     }
 
     Vector3 GetRandomStartLocation(){
@@ -137,45 +140,47 @@ public class CarAgent : Agent
         }
 
         // negative reward if colliding with other object
+        /*
         if (isColliding)
         {
             SetReward(-0.1f);
         }
-        
+        */
+
         // distance to target
         if (distanceToTarget < previousDistanceToTarget)
         {
             // Positive reward if getting 1 unit closer to target
             if ((previousDistanceToTarget - distanceToTarget) >= 1)
             {
-                SetReward(0.1f);
-                previousDistanceToTarget = distanceToTarget;
-            }        
-        } else
-        {
-            // Negative reward if getting 1 unit farther away from target
-            if ((distanceToTarget - previousDistanceToTarget) >= 1)
-            {
-                SetReward(-0.1f);
+                SetReward(0.1f/distanceToTarget);
                 previousDistanceToTarget = distanceToTarget;
             }
         }
 
         // reached target
-        if (distanceToTarget < 1.5f && rigidbody.velocity.magnitude < 0.01f)
+        if (distanceToTarget < 1.5f)
         {
-            // if almost parallel, agent receives additional reward
-            Vector3 targetMarkingDirection = new Vector3(0, 0, 1);
-            float dotProduct = Vector3.Dot(targetMarkingDirection, rigidbody.transform.forward);
-
-            if (dotProduct > 0.9)
+            if (!reachedTarget)
             {
-                SetReward(0.5f);
-            }        
+                SetReward(1f + secondsRemaining / maxEpisodeLength);
+                reachedTarget = true;
+            }
 
-            // minimum reward of 1 and additional reward depending on time needed
-            SetReward(1 + secondsRemaining/maxEpisodeLength);
-            EndEpisode();
+            if (rigidbody.velocity.magnitude < 0.01f)
+            {
+                // if almost parallel, agent receives additional reward
+                Vector3 targetMarkingDirection = new Vector3(0, 0, 1);
+                float dotProduct = Vector3.Dot(targetMarkingDirection, rigidbody.transform.forward);
+
+                if (dotProduct > 0.9)
+                {
+                    SetReward(1f);
+                }
+
+                SetReward(2);
+                EndEpisode();
+            }
         }
 
         // fell from platform
