@@ -59,7 +59,8 @@ public class CarAgent : Agent
      * - 8 proximity sensors in all directions
      *  - clockwise in 45 degree steps
      * - current speed
-     * - position relative to parking spot
+     * - position of car
+     * - position of parking lot
     **/
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -67,15 +68,19 @@ public class CarAgent : Agent
         float currentspeed = GetComponent<Rigidbody>().velocity.magnitude;
         sensor.AddObservation(currentspeed);
 
-        if (target != null)
-        {
-            Vector3 directionToTarget = target.transform.position - transform.position;
+        // car position
+        sensor.AddObservation(transform.position.x);
+        sensor.AddObservation(transform.position.z);
 
-            // position relative to parking spot
-            sensor.AddObservation(directionToTarget.x);
-            sensor.AddObservation(directionToTarget.z);
+
+        if (target != null)
+        {          
+            // target position
+            sensor.AddObservation(target.transform.position.x);
+            sensor.AddObservation(target.transform.position.z);
 
             // angle as scalar to parking spot
+            Vector3 directionToTarget = target.transform.position - transform.position;
             float scalarToTarget = Vector3.Dot(transform.forward.normalized, directionToTarget.normalized);
             sensor.AddObservation(scalarToTarget);
         }
