@@ -143,9 +143,12 @@ public class CarAgent : Agent
         /*
         if (isColliding)
         {
-            SetReward(-0.1f);
+            AddReward(-0.01f);
         }
         */
+
+        // negative reward for each time step
+        AddReward(-0.01f);
 
         // distance to target
         if (distanceToTarget < previousDistanceToTarget)
@@ -153,7 +156,7 @@ public class CarAgent : Agent
             // Positive reward if getting 1 unit closer to target
             if ((previousDistanceToTarget - distanceToTarget) >= 1)
             {
-                SetReward(0.1f/distanceToTarget);
+                AddReward(0.1f/distanceToTarget);
                 previousDistanceToTarget = distanceToTarget;
             }
         }
@@ -163,7 +166,7 @@ public class CarAgent : Agent
         {
             if (!reachedTarget)
             {
-                SetReward(1f + secondsRemaining / maxEpisodeLength);
+                AddReward(1);
                 reachedTarget = true;
             }
 
@@ -175,10 +178,10 @@ public class CarAgent : Agent
 
                 if (dotProduct > 0.9)
                 {
-                    SetReward(1f);
+                    AddReward(1);
                 }
 
-                SetReward(2);
+                AddReward(1);
                 EndEpisode();
             }
         }
