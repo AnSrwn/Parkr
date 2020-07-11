@@ -86,7 +86,15 @@ public class CarAgent : Agent
             int sensorAngle = proximitySensorId * 45;
             Quaternion sensorDirection = transform.rotation;
             sensorDirection = Quaternion.AngleAxis(sensorAngle, Vector3.up);
-            sensor.AddObservation(SenseDistance(sensorDirection * transform.forward));
+            float distanceToObstacle = SenseDistance(sensorDirection * transform.forward);
+            if (distanceToObstacle == 0)
+            {
+                sensor.AddObservation(1000f);
+            }
+            else
+            {
+                sensor.AddObservation(distanceToObstacle);
+            }
         }
     }
 
