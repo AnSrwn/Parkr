@@ -8,7 +8,7 @@ In order to do this, Unity ML-Agents is used.
 * Python Version: 3.7.7
 
 ## Demo
-For the demo a 10 min trained model is included.
+A model trained with PPO is included. So far it has not learned much, it only drives in circles.
 
 1. Open the project in Unity.
 1. Select and open the scene 'ParkingLot' in the folder 'Scenes'.
