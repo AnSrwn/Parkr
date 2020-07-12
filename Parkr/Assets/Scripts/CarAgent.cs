@@ -52,6 +52,7 @@ public class CarAgent : Agent
         StartCoroutine(CheckForPositionChange(1));
     }
 
+    // Generates a random start position inside a specific area
     Vector3 GetRandomStartLocation(){
         float xSpawnPosition = UnityEngine.Random.Range(resetAreaLowerLeft.position.x, resetAreaUpperRight.position.x);
         float zSpawnPosition = UnityEngine.Random.Range(resetAreaLowerLeft.position.z, resetAreaUpperRight.position.z);
@@ -65,25 +66,26 @@ public class CarAgent : Agent
      * - current speed
      * - position of car
      * - position of parking lot
+     * - angle of car relative to parking spot
     **/
     public override void CollectObservations(VectorSensor sensor)
     {
-        // current speed
+        // Current speed
         float currentspeed = GetComponent<Rigidbody>().velocity.magnitude;
         sensor.AddObservation(currentspeed);
 
-        // car position
+        // Car position
         sensor.AddObservation(transform.position.x);
         sensor.AddObservation(transform.position.z);
 
 
         if (target != null)
         {          
-            // target position
+            // Target position
             sensor.AddObservation(target.transform.position.x);
             sensor.AddObservation(target.transform.position.z);
 
-            // angle as scalar to parking spot
+            // Angle as scalar to parking spot
             Vector3 directionToTarget = target.transform.position - transform.position;
             float scalarToTarget = Vector3.Dot(transform.forward.normalized, directionToTarget.normalized);
             sensor.AddObservation(scalarToTarget);
@@ -140,40 +142,29 @@ public class CarAgent : Agent
             wheel.steerAngle = maxTurn * vectorAction[1]; // steering
         }
 
-        // negative reward if colliding with other object
-        /*
+        // Negative reward if colliding with other object
         if (isColliding)
         {
             AddReward(-0.01f);
         }
-        */
 
-        // negative reward for each time step
+        // Negative reward for each time step
         AddReward(-0.01f);
 
-        // distance to target
-        if (distanceToTarget < previousDistanceToTarget)
-        {
-            // Positive reward if getting 1 unit closer to target
-            if ((previousDistanceToTarget - distanceToTarget) >= 1)
-            {
-                AddReward(0.1f/distanceToTarget);
-                previousDistanceToTarget = distanceToTarget;
-            }
-        }
-
-        // reached target
+        // Reached target
         if (distanceToTarget < 1.5f)
         {
+            // A single reward for just reaching the target
             if (!reachedTarget)
             {
                 AddReward(1);
                 reachedTarget = true;
             }
 
+            // Coming to a stop at the target
             if (rigidbody.velocity.magnitude < 0.01f)
             {
-                // if almost parallel, agent receives additional reward
+                // If almost parallel, agent receives additional reward
                 Vector3 targetMarkingDirection = new Vector3(0, 0, 1);
                 float dotProduct = Vector3.Dot(targetMarkingDirection, rigidbody.transform.forward);
 
@@ -187,7 +178,7 @@ public class CarAgent : Agent
             }
         }
 
-        // fell from platform
+        // Fell from platform
         if (this.transform.localPosition.y < -1)
         {
             EndEpisode();
