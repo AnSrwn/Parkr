@@ -14,7 +14,7 @@ default:
     vis_encode_type: simple
     normalize: false 
     hidden_units: 128
-    num_layers: 2
+    num_layers: 3
     sequence_length: 64
     memory_size: 256
     
