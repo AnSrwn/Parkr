@@ -49,6 +49,7 @@ public class CarAgent : Agent
         previousDistanceToTarget = initialDistanceToTarget;
         isColliding = false;
         reachedTarget = false;
+        StartCoroutine(CheckForPositionChange(1));
     }
 
     Vector3 GetRandomStartLocation(){
@@ -196,6 +197,20 @@ public class CarAgent : Agent
         if (secondsRemaining < 0)
         {
             EndEpisode();
+        }
+    }
+
+    private IEnumerator<WaitForSeconds> CheckForPositionChange(int waitTime)
+    {
+        Vector3 oldPosition = new Vector3(0, 0, 0);
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            if ((transform.position - oldPosition).magnitude < 0.5){
+                Debug.Log("Not moving. Terminating Episode");
+                EndEpisode();
+            }
+            oldPosition = transform.position;
         }
     }
 
